@@ -29,13 +29,6 @@ struct std::hash<Point>
     }
 };
 
-/*
-unordered_map<double,vector<Point>> make_map(Point p, vector<Point> points)
-{
-    unordered_map<double,vector<Point>> p_map{};
-
-}
-*/
 int main(int argc, const char *argv[])
 {
     WindowPtr window = create_window(argc, argv);
@@ -59,7 +52,7 @@ int main(int argc, const char *argv[])
 
     // sort points by natural order
     // makes finding endpoints of line segments easy
-    sort(points.begin(), points.end());
+    //sort(points.begin(), points.end());
 
     auto begin = chrono::high_resolution_clock::now();
 
@@ -67,23 +60,14 @@ int main(int argc, const char *argv[])
     // Draw any lines that you find in 'points' using the function 'window->draw'.
     /////////////////////////////////////////////////////////////////////////////
     std::unordered_map<Point, std::unordered_map<double, std::vector<Point>>> drawmap{};
-    int it{};
 
     for (auto &point : points)
     {
-        //cout << "Iteration # " << it++ << endl;
         for (auto &&i : points)
         {
-          //  std::cout << point.slopeTo(i) << std::endl;
             drawmap[point][point.slopeTo(i)].push_back(i);
         }
     }
-
-    /*for (auto &&point : points)
-    {
-        
-    }
-    */
 
     for (auto &&i : points)
     {
@@ -98,47 +82,6 @@ int main(int argc, const char *argv[])
             }
         }
     }
-    int repeat{};
-    //sort(points.begin(), points.end(), [&point](Point a, Point b) { return point.slopeTo(a) < point.slopeTo(b); });
-    /* for (size_t i = 0; i < points.size(); i++)
-        {
-            cout<< point.slopeTo(points[i]);
-            if (i + 1 < points.size())
-            {
-<double, std::vector<Point>>> drawmap{};
-    int it{};
-                }
-                else
-                {
-                    if (repeat >= 3)
-                    {
-                        //std::cout << 
-                        window->draw(point, points[i]);
-                        
-                    }
-                    repeat = 0;
-                }
-            }
-        } */
-    /*for (auto &i : points)
-        {
-            cout << point.slopeTo(i);
-            if (point.slopeTo(i) == -inf || point.slopeTo(points[i]) == point.slopeTo(points[i + 1]))
-            {
-                repeat++;
-            }
-            else
-            {
-                if (repeat >= 3)
-                {
-                    //std::cout <<
-                    window->draw(point, points[i]);
-                }
-                repeat = 0;
-            }
-        }*/
-
-    window->draw(points);
 
     auto end = chrono::high_resolution_clock::now();
     cout << "Computing line segments took "
