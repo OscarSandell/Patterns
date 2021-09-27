@@ -72,47 +72,7 @@ main(int argc, const char *argv[])
     int it{};
     for (auto &point : points)
     {
-        cout << "Iteration # " << it++ << endl;
-        int repeat{};
-        //sort(points.begin(), points.end(), [&point](Point a, Point b) { return point.slopeTo(a) < point.slopeTo(b); });
-        /* for (size_t i = 0; i < points.size(); i++)
-        {
-            cout<< point.slopeTo(points[i]);
-            if (i + 1 < points.size())
-            {
-<double, std::vector<Point>>> drawmap{};
-    int it{};
-                }
-                else
-                {
-                    if (repeat >= 3)
-                    {
-                        //std::cout << 
-                        window->draw(point, points[i]);
-                        
-                    }
-                    repeat = 0;
-                }
-            }
-        } */
-        /*for (auto &i : points)
-        {
-            cout << point.slopeTo(i);
-
-            if (point.slopeTo(i) == -inf || point.slopeTo(points[i]) == point.slopeTo(points[i + 1]))
-            {
-                repeat++;
-            }
-            else
-            {
-                if (repeat >= 3)
-                {
-                    //std::cout <<
-                    window->draw(point, points[i]);
-                }
-                repeat = 0;
-            }
-        }*/
+        //cout << "Iteration # " << it++ << endl;
         for (auto &&i : points)
         {
             drawmap[point][point.slopeTo(i)].push_back(i);
