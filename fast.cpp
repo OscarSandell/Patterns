@@ -21,11 +21,10 @@ struct std::hash<Point>
 {
     size_t operator()(const Point &argv) const
     {
-        std::string a = "(";
-        a += to_string(argv.x);
-        a += to_string(argv.y);
-        a += ")";
-        return std::hash<std::string>{}(a);
+       size_t t{};
+       t += t <<  argv.x;
+       t += t << argv.y;
+       return t;
     }
 };
 
