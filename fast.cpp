@@ -21,13 +21,12 @@ struct std::hash<Point>
 {
     size_t operator()(const Point &argv) const
     {
-        std::string a= "(";
+        std::string a = "(";
         a += to_string(argv.x);
-        a+=to_string(argv.y);
-        a+= ")";
+        a += to_string(argv.y);
+        a += ")";
         return std::hash<std::string>{}(a);
     }
-
 };
 
 /*
@@ -37,8 +36,7 @@ unordered_map<double,vector<Point>> make_map(Point p, vector<Point> points)
 
 }
 */
-int
-main(int argc, const char *argv[])
+int main(int argc, const char *argv[])
 {
     WindowPtr window = create_window(argc, argv);
 
@@ -70,33 +68,75 @@ main(int argc, const char *argv[])
     /////////////////////////////////////////////////////////////////////////////
     std::unordered_map<Point, std::unordered_map<double, std::vector<Point>>> drawmap{};
     int it{};
+
     for (auto &point : points)
     {
         //cout << "Iteration # " << it++ << endl;
         for (auto &&i : points)
         {
+          //  std::cout << point.slopeTo(i) << std::endl;
             drawmap[point][point.slopeTo(i)].push_back(i);
         }
-        
+    }
+
+    /*for (auto &&point : points)
+    {
         
     }
+    */
 
     for (auto &&i : points)
     {
-        for(auto &a : drawmap[i])
+        for (auto &a : drawmap[i])
         {
-            if(a.second.size() > 3)
+            if (a.second.size() >= 3)
             {
                 for (auto &&b : a.second)
                 {
-                      window->draw(i,b);
+                    window->draw(i, b);
                 }
-                
-              
             }
         }
     }
-    
+    int repeat{};
+    //sort(points.begin(), points.end(), [&point](Point a, Point b) { return point.slopeTo(a) < point.slopeTo(b); });
+    /* for (size_t i = 0; i < points.size(); i++)
+        {
+            cout<< point.slopeTo(points[i]);
+            if (i + 1 < points.size())
+            {
+<double, std::vector<Point>>> drawmap{};
+    int it{};
+                }
+                else
+                {
+                    if (repeat >= 3)
+                    {
+                        //std::cout << 
+                        window->draw(point, points[i]);
+                        
+                    }
+                    repeat = 0;
+                }
+            }
+        } */
+    /*for (auto &i : points)
+        {
+            cout << point.slopeTo(i);
+            if (point.slopeTo(i) == -inf || point.slopeTo(points[i]) == point.slopeTo(points[i + 1]))
+            {
+                repeat++;
+            }
+            else
+            {
+                if (repeat >= 3)
+                {
+                    //std::cout <<
+                    window->draw(point, points[i]);
+                }
+                repeat = 0;
+            }
+        }*/
 
     window->draw(points);
 
@@ -110,5 +150,3 @@ main(int argc, const char *argv[])
 
     return 0;
 }
-
-
