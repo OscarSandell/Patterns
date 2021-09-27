@@ -26,7 +26,7 @@ public:
     // Comparing x-ccordinates and breaking ties by y-coordinates
     bool operator <(const Point&) const;
     bool operator >(const Point&) const;
-
+    bool operator ==(const Point&) const;
     // Output.
     friend std::ostream& operator<<(std::ostream&, const Point&);
 };
