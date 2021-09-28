@@ -5,26 +5,22 @@
  */
 
 #include <iostream>
-#include <algorithm>
 #include <vector>
 #include <chrono>
 #include "point.h"
 #include "window.h"
 #include <unordered_map>
-#include <limits>
 using namespace std;
-
-#define inf std::numeric_limits<double>::infinity()
 
 template <>
 struct std::hash<Point>
 {
     size_t operator()(const Point &argv) const
     {
-       size_t t{};
-       t += t <<  argv.x;
-       t += t << argv.y;
-       return t;
+        size_t t{};
+        t += t << argv.x;
+        t += t << argv.y;
+        return t;
     }
 };
 
@@ -68,6 +64,7 @@ int main(int argc, const char *argv[])
         }
     }
 
+    int count{};
     for (auto &&i : points)
     {
         for (auto &a : drawmap[i])

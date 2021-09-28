@@ -23,7 +23,7 @@ sf::Vertex Gui_Window::make_vertex(Point p, sf::Color color) {
 
 void Gui_Window::draw(const std::vector<Point> &points) {
     for (Point p : points) {
-        this->points.push_back(make_vertex(p, sf::Color::Red));
+        this->points.push_back(make_vertex(p, sf::Color::Black));
     }
     draw();
     check_events();
