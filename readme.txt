@@ -13,7 +13,7 @@
  * i �vriga fall.
  *
  **********************************************************************/
-    
+    //All tidtagning är gjord på Oscars Dator
       N       brute       sortering
  ----------------------------------
     150       2 ms        2 ms
@@ -84,8 +84,23 @@ Sortering:
  **********************************************************************/
 
 F�rbrukning av brute p� ett �r: 89,9 kWh tror vi om vi kan räkna
+N = 6400 ---> 145,464 s == 2,4244 min = 0,0404066667 h
+total tid aktivt per h = 0,0404066667 * 2 = 0,0808133334 h
+
+aktiv kWh = 28 * 0,0808133334 * 24*365 / 1000 = 19,82189442 kWh
+idle kWh  = 8 * 24 * 365 / 1000 =  70,08 kWh
+
+total kWh = idle + aktiv = 70,08 + 19,82 = 89,9 kWh
 
 F�rbrukning av sotering p� ett �r: ? kWh
+N = 6400 --->4,812 s == 0,0802 min = 0,0013366667 h
+total tid aktiv per h = 0,0013366667 h * 2 = 0,00267333334 h
 
-Skillnad: ? kWh
+aktiv kWh = 28*0,00267333334 * 24 * 365 / 1000 = 0,6557 kWh
+idle kWh = 8 * 24 * 365 / 1000 = 70,08 kWh
+
+total kWh = idle + aktiv = 0,65 + 70,08 = 70,73 kWh
+
+Skillnad: brute - sortering = 89,9 - 70,73 kWh = 19,17 kWh
+Svar: Brute anv�nder 19,17 kWh mer energi än den vår sortering
 

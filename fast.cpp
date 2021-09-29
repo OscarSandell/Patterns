@@ -64,7 +64,6 @@ int main(int argc, const char *argv[])
         }
     }
 
-    int count{};
     for (auto &&i : points)
     {
         for (auto &a : drawmap[i])
