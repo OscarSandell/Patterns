@@ -10,6 +10,7 @@
 #include "point.h"
 #include "window.h"
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 template <>
@@ -47,7 +48,7 @@ int main(int argc, const char *argv[])
 
     // sort points by natural order
     // makes finding endpoints of line segments easy
-    //sort(points.begin(), points.end());
+    sort(points.begin(), points.end());
 
     auto begin = chrono::high_resolution_clock::now();
 
@@ -66,10 +67,7 @@ int main(int argc, const char *argv[])
         {
             if (i.second.size() >= 3)
             {
-                for (auto &&b : i.second)
-                {
-                    window->draw(point, b);
-                }
+                   window->draw(i.second.front(),i.second.back());
             }
         }
     }
