@@ -13,18 +13,6 @@
 #include <algorithm>
 using namespace std;
 
-template <>
-struct std::hash<Point>
-{
-    size_t operator()(const Point &argv) const
-    {
-        size_t t{};
-        t += t << argv.x;
-        t += t << argv.y;
-        return t;
-    }
-};
-
 int main(int argc, const char *argv[])
 {
     WindowPtr window = create_window(argc, argv);
