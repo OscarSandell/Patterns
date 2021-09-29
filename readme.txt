@@ -17,14 +17,14 @@
       N       brute       sortering
  ----------------------------------
     150       2 ms        2 ms
-    200       4 ms       22 ms
-    300      21 ms       27 ms
-    400      42 ms       41 ms
-    800     282 ms       80 ms  
-   1600    2280 ms      286 ms
-   3200   18142 ms     1147 ms
-   6400  145464 ms     4812 ms
-  12800 1167181 ms    23188 ms
+    200       4 ms        5 ms
+    300      21 ms       19 ms
+    400      42 ms       31 ms
+    800     282 ms       79 ms  
+   1600    2280 ms      244 ms
+   3200   18142 ms      859 ms
+   6400  145464 ms     3695 ms
+  12800 1167181 ms    17596 ms
 
 
 /**********************************************************************
@@ -93,14 +93,14 @@ idle kWh  = 8 * 24 * 365 / 1000 =  70,08 kWh
 total kWh = idle + aktiv = 70,08 + 19,82 = 89,9 kWh
 
 F�rbrukning av sotering p� ett �r: ? kWh
-N = 6400 --->4,812 s == 0,0802 min = 0,0013366667 h
-total tid aktiv per h = 0,0013366667 h * 2 = 0,00267333334 h
+N = 6400 --->3,695 s == 0,0615 min = 0,0010263889 h
+total tid aktiv per h = 0,0010263889 h * 2 = 0,0020527770 h
 
-aktiv kWh = 28*0,00267333334 * 24 * 365 / 1000 = 0,6557 kWh
+aktiv kWh = 28*0,0020527770 * 24 * 365 / 1000 = 0,50305 kWh
 idle kWh = 8 * 24 * 365 / 1000 = 70,08 kWh
 
-total kWh = idle + aktiv = 0,65 + 70,08 = 70,73 kWh
+total kWh = idle + aktiv = 0,50 + 70,08 = 70,58 kWh
 
-Skillnad: brute - sortering = 89,9 - 70,73 kWh = 19,17 kWh
-Svar: Brute anv�nder 19,17 kWh mer energi än den vår sortering
+Skillnad: brute - sortering = 89,9 - 70,58 kWh = 19,32 kWh
+Svar: Brute anv�nder 19,32 kWh mer energi än vår sorterade
 
