@@ -10,6 +10,7 @@
 #include "point.h"
 #include "window.h"
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 template <>
@@ -47,36 +48,30 @@ int main(int argc, const char *argv[])
 
     // sort points by natural order
     // makes finding endpoints of line segments easy
-    //sort(points.begin(), points.end());
+    sort(points.begin(), points.end());
 
     auto begin = chrono::high_resolution_clock::now();
 
     /////////////////////////////////////////////////////////////////////////////
     // Draw any lines that you find in 'points' using the function 'window->draw'.
     /////////////////////////////////////////////////////////////////////////////
-    std::unordered_map<Point, std::unordered_map<double, std::vector<Point>>> drawmap{};
 
     for (auto &point : points)
     {
+        std::unordered_map<double, std::vector<Point>> p{};
         for (auto &&i : points)
         {
-            drawmap[point][point.slopeTo(i)].push_back(i);
+            p[point.slopeTo(i)].push_back(i);
         }
-    }
-
-    for (auto &&i : points)
-    {
-        for (auto &a : drawmap[i])
+        for (auto &&i : p)
         {
-            if (a.second.size() >= 3)
+            if (i.second.size() >= 3)
             {
-                for (auto &&b : a.second)
-                {
-                    window->draw(i, b);
-                }
+                   window->draw(i.second.front(),i.second.back());
             }
         }
     }
+
 
     auto end = chrono::high_resolution_clock::now();
     cout << "Computing line segments took "
