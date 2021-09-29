@@ -54,16 +54,28 @@ int main(int argc, const char *argv[])
     /////////////////////////////////////////////////////////////////////////////
     // Draw any lines that you find in 'points' using the function 'window->draw'.
     /////////////////////////////////////////////////////////////////////////////
-    std::unordered_map<Point, std::unordered_map<double, std::vector<Point>>> drawmap{};
+    //std::unordered_map<Point, std::unordered_map<double, std::vector<Point>>> drawmap{};
 
     for (auto &point : points)
     {
+        std::unordered_map<double, std::vector<Point>> p{};
         for (auto &&i : points)
         {
-            drawmap[point][point.slopeTo(i)].push_back(i);
+            p[point.slopeTo(i)].push_back(i);
+        }
+        for (auto &&i : p)
+        {
+            if (i.second.size() >= 3)
+            {
+                for (auto &&b : i.second)
+                {
+                    window->draw(point, b);
+                }
+            }
         }
     }
 
+    /*
     for (auto &&i : points)
     {
         for (auto &a : drawmap[i])
@@ -77,6 +89,7 @@ int main(int argc, const char *argv[])
             }
         }
     }
+    */
 
     auto end = chrono::high_resolution_clock::now();
     cout << "Computing line segments took "
