@@ -55,11 +55,10 @@ int main(int argc, const char *argv[])
         {
             if (i.second.size() >= 3)
             {
-                   window->draw(i.second.front(),i.second.back());
+                window->draw(i.second.front(), i.second.back());
             }
         }
     }
-
 
     auto end = chrono::high_resolution_clock::now();
     cout << "Computing line segments took "
